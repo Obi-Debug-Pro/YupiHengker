@@ -10,7 +10,7 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("👨‍💻 Naufal Rafi Putera Wiyanto")
+        st.subheader("👨‍💻 Naufal Rafi Putera")
         st.write("• Analisis Data & Visualisasi")
         st.write("• Pengembangan Fitur Streamlit")
 
@@ -19,7 +19,7 @@ def main():
         st.write("• Dokumentasi Teknis")
 
     with col2:
-        st.subheader("👨‍💻 Mumammad Fadhil Fatkhurrohman")
+        st.subheader("👨‍💻 Muhammad Fadhil Fatkhurrohman")
         st.write("• Desain UI/UX")
         st.write("• Testing & Validasi")
 
