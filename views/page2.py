@@ -7,7 +7,7 @@ from views.data_utils import load_data
 def render_overview(df):
     """Render Key Metrics and Overview"""
     st.header("📈 Ringkasan Eksekutif")
-    st.caption("Gambaran umum kondisi rata-rata selama periode terpilih.")
+    st.caption("Gambaran umum kondisi rata-rata selama periode 2023.")
     
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -25,32 +25,68 @@ def render_overview(df):
     st.info("Gunakan menu **'Analisis Tren'** di sidebar untuk melihat grafik detail waktu ke waktu.")
 
 def render_trends(df):
-    """Render Time Series Charts"""
+    """Render Time Series Charts + Interpretasi"""
     st.header("📉 Analisis Tren Waktu")
     
     variables = st.multiselect(
         "Pilih Variabel:",
         ['TEMPERATURE', 'HUMIDITY', 'RAINFALL'],
-        default=['TEMPERATURE', 'HUMIDITY']
+        default=['TEMPERATURE']
     )
 
-    if variables:
-        fig_line = px.line(
-            df.reset_index(),
-            x='DATE',
-            y=variables,
-            title="Dinamika Cuaca Harian",
-            markers=True,
-            color_discrete_sequence=px.colors.qualitative.G10
+    if not variables:
+        st.warning("Pilih setidaknya satu variabel untuk ditampilkan.")
+        return
+
+    # ===== GRAFIK =====
+    fig_line = px.line(
+        df.reset_index(),
+        x='DATE',
+        y=variables,
+        title="Dinamika Cuaca Harian",
+        markers=True,
+        color_discrete_sequence=px.colors.qualitative.G10
+    )
+    fig_line.update_layout(
+        hovermode="x unified",
+        xaxis_title="Tanggal",
+        yaxis_title="Nilai",
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1
         )
-        fig_line.update_layout(
-            hovermode="x unified",
-            xaxis_title="Tanggal",
-            yaxis_title="Nilai",
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+    st.plotly_chart(fig_line, use_container_width=True)
+
+    # ===== INTERPRETASI =====
+    st.markdown("### 📝 Interpretasi Analisis Tren")
+
+    if "TEMPERATURE" in variables:
+        st.info(
+            "🌡️ **Temperatur** menunjukkan fluktuasi harian yang cukup tinggi, "
+            "namun tetap berada dalam rentang yang relatif stabil sepanjang tahun 2023. "
+            "Tidak terlihat tren kenaikan atau penurunan ekstrem, "
+            "mengindikasikan karakteristik iklim tropis yang konsisten."
         )
-        st.plotly_chart(fig_line, use_container_width=True)
-    else:
+
+    if "HUMIDITY" in variables:
+        st.info(
+            "💧 **Kelembapan** memperlihatkan variabilitas yang cukup tajam sepanjang waktu. "
+            "Perubahan ini mencerminkan dinamika atmosfer yang dipengaruhi oleh "
+            "pola hujan dan kondisi cuaca harian."
+        )
+
+    if "RAINFALL" in variables:
+        st.info(
+            "🌧️ **Curah hujan** menunjukkan pola yang tidak merata dan bersifat episodik. "
+            "Lonjakan hujan pada periode tertentu mengindikasikan potensi "
+            "kejadian cuaca ekstrem seperti banjir."
+        )
+
+    
         st.warning("Pilih setidaknya satu variabel untuk ditampilkan.")
 
 def render_analysis(df):
@@ -59,6 +95,7 @@ def render_analysis(df):
     
     tab1, tab2 = st.tabs(["Korelasi", "Distribusi"])
     
+    # ===== TAB KORELASI =====
     with tab1:
         st.subheader("Matriks Korelasi")
         if not df.empty:
@@ -72,20 +109,55 @@ def render_analysis(df):
             )
             st.plotly_chart(fig_corr, use_container_width=True)
             st.caption("Ket: Nilai mendekati 1 berarti korelasi positif kuat, -1 negatif kuat.")
+            st.info("""
+📌 **Interpretasi Korelasi:**
 
+Seluruh pasangan variabel memiliki nilai korelasi mendekati nol.
+Hal ini menunjukkan **tidak adanya hubungan linier yang kuat**
+antara suhu, kelembapan, dan curah hujan sepanjang tahun 2023.
+""")
+
+    # ===== TAB DISTRIBUSI =====
     with tab2:
         st.subheader("Histogram Distribusi")
-        dist_var = st.selectbox("Pilih Variabel:", ['TEMPERATURE', 'HUMIDITY', 'RAINFALL'])
+        
+        dist_var = st.selectbox(
+            "Pilih Variabel:",
+            ['TEMPERATURE', 'HUMIDITY', 'RAINFALL']
+        )
         
         fig_dist = px.histogram(
-            df, 
-            x=dist_var, 
-            nbins=30, 
+            df,
+            x=dist_var,
+            nbins=30,
             marginal="box",
             title=f"Distribusi Frekuensi {dist_var}",
             color_discrete_sequence=['#EF553B']
         )
         st.plotly_chart(fig_dist, use_container_width=True)
+
+        st.markdown("### 📝 Interpretasi Distribusi Data")
+
+        if dist_var == "TEMPERATURE":
+            st.info(
+                "🌡️ **Distribusi Temperatur** terkonsentrasi pada nilai menengah "
+                "dengan sebaran relatif simetris, menunjukkan kondisi suhu yang stabil "
+                "dan minim kejadian ekstrem."
+            )
+
+        elif dist_var == "HUMIDITY":
+            st.info(
+                "💧 **Distribusi Kelembapan** menunjukkan sebaran yang cukup lebar, "
+                "mengindikasikan variabilitas atmosfer yang tinggi sepanjang tahun."
+            )
+
+        elif dist_var == "RAINFALL":
+            st.info(
+                "🌧️ **Distribusi Curah Hujan** bersifat tidak merata dan condong "
+                "pada nilai rendah dengan beberapa lonjakan ekstrem, "
+                "menunjukkan hujan yang episodik."
+            )
+
 
 def render_data(df):
     """Render Raw Data Table"""
