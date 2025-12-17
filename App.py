@@ -8,7 +8,6 @@ from views.data_utils import load_data
 st.set_page_config(page_title="YupiHengker", page_icon="🌤", layout="wide")
 load_css()
 
-# --- Sidebar Navigation ---
 st.sidebar.title("Navigasi")
 nav = st.sidebar.radio(
     "Menu Utama:",
@@ -19,9 +18,7 @@ nav = st.sidebar.radio(
 st.sidebar.markdown("---")
 st.sidebar.caption("© 2024 YupiHengker Team")
 
-# --- Content Routing ---
 if nav == "Home":
-    # Hero Section
     col_logo, col_text = st.columns([1, 2])
     
     with col_logo:
@@ -39,15 +36,11 @@ if nav == "Home":
         wawasan mendalam dari data iklim historis melalui visualisasi yang interaktif dan mudah dipahami.
         """)
         if st.button("🚀 Mulai Eksplorasi Data"):
-            # Simple way to hint user or reload (Streamlit limitation on nav jump without extra logic)
             st.markdown("*Silakan pilih menu 'Visualisasi Data' di sidebar.*")
 
     st.markdown("---")
-
-    # Quick Stats Section
     st.subheader("⚡ Kilas Data Terkini")
     
-    # Try loading data for quick stats
     try:
         DATA_FILE = os.path.join(os.path.dirname(__file__), "weather_data.csv")
         df = load_data(DATA_FILE)
@@ -68,8 +61,6 @@ if nav == "Home":
         st.error("Gagal memuat ringkasan data.")
 
     st.markdown("---")
-
-    # Feature Cards
     st.subheader("📌 Fitur & Menu")
     
     c1, c2, c3 = st.columns(3)
