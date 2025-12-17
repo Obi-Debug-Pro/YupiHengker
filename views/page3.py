@@ -24,9 +24,6 @@ def main():
         st.write("• Analisis Data & Visualisasi")
         st.write("• Pengembangan Fitur Streamlit")
 
-        st.write("•  Analisis Data & VisualisasiX")
-        st.write("• Pengembangan Streamlit")
-
         st.subheader("👨‍💻 Obinata Ridho Abdillah")
         st.write("• Manajemen Proyek")
         st.write("• Integrasi Sistem")
