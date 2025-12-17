@@ -86,14 +86,10 @@ def main():
     st.success("👉 Mulai eksplorasi di menu **'Visualisasi Data'** (Sidebar kiri).")
 
     st.markdown("---")
-<<<<<<< HEAD
-    st.caption("Disusun Oleh Kelompok 1: Obinata Ridho Abdillah, M. Fadhil Fakhturrohman, Naufal Rafi Putera, Nazil Dwi Khoirul fata.")
-=======
     st.caption(
         "Disusun Oleh Kelompok 1: Obinata Ridho Abdillah, Muhammad Fadhil Fakhturrohman, "
         "Naufal Rafi Putera Wiyanto, Nazil Dwi Khoirul Fata."
     )
->>>>>>> 9871221 (Update dashboard: tren, distribusi, dan interpretasi data iklim)
 
 
 if __name__ == "__main__":
