@@ -3,9 +3,6 @@ import os
 
 
 def main():
-    # --- Global CSS handles styling now ---
-
-    # --- Hero Section ---
     st.markdown('<p class="hero-title">☀️ Proyek Analisis Iklim</p>', unsafe_allow_html=True)
     st.markdown('<p class="hero-subtitle">Eksplorasi Data Cuaca Historis & Dampaknya</p>', unsafe_allow_html=True)
     st.markdown("---")
@@ -32,7 +29,6 @@ def main():
         mengubah data mentah menjadi wawasan bermakna untuk masa depan yang berkelanjutan.
         """)
 
-    # --- Urgensi Section with Columns ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown('<h3 style="text-align: center;">Mengapa Data Iklim Penting?</h3>', unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
@@ -51,7 +47,6 @@ def main():
         st.markdown("#### 🏗️ Infrastruktur")
         st.warning("Desain bangunan tahan perubahan suhu dan intensitas hujan ekstrem.")
 
-    # --- Metodologi ---
     st.markdown("---")
     st.subheader("🎯 Tujuan & Metodologi")
     
@@ -62,7 +57,6 @@ def main():
         3.  **Analisis Deskriptif**: Statistik utama (Rata-rata, Min, Max).
         """)
 
-    # --- Footer / CTA ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.success("👉 Mulai eksplorasi di menu **'Visualisasi Data'** (Sidebar kiri).")
 
