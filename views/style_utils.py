@@ -85,3 +85,7 @@ def load_css():
         }
         </style>
     """, unsafe_allow_html=True)
+    .ipynb_checkpoints/
+__pycache__/
+*.pyc
+

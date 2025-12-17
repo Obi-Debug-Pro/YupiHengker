@@ -112,8 +112,13 @@ def render_analysis(df):
 Seluruh pasangan variabel memiliki nilai korelasi mendekati nol.
 Hal ini menunjukkan **tidak adanya hubungan linier yang kuat**
 antara suhu, kelembapan, dan curah hujan sepanjang tahun 2023.
+
+Seluruh pasangan variabel memiliki nilai korelasi mendekati nol.
+Hal ini menunjukkan **tidak adanya hubungan linier yang kuat**
+antara suhu, kelembapan, dan curah hujan sepanjang tahun 2023.
 """)
 
+   
     with tab2:
         st.subheader("Histogram Distribusi")
         
