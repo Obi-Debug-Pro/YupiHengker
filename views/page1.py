@@ -61,7 +61,7 @@ def main():
     st.success("👉 Mulai eksplorasi di menu **'Visualisasi Data'** (Sidebar kiri).")
 
     st.markdown("---")
-    st.caption("Disusun Oleh Kelompok 1: Naufal Rafi, Nazil Dwi, Muhammad Fadhil, Obinata Ridho.")
+    st.caption("Disusun Oleh Kelompok 1: Obinata Ridho Abdillah, M. Fadhil Fakhturrohman, Naufal.")
 
 
 if __name__ == "__main__":
