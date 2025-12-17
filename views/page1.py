@@ -48,20 +48,52 @@ def main():
         st.warning("Desain bangunan tahan perubahan suhu dan intensitas hujan ekstrem.")
 
     st.markdown("---")
+    st.subheader("📊 Insight Utama Data Iklim 2023")
+
+    with st.container():
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        col_i1, col_i2, col_i3, col_i4 = st.columns(4)
+
+        with col_i1:
+            st.metric("🌡️ Suhu Rata-rata", "27.18 °C")
+
+        with col_i2:
+            st.metric("🔥 Suhu Maksimum", "34.5 °C")
+
+        with col_i3:
+            st.metric("🌧️ Total Curah Hujan", "3558.89 mm")
+
+        with col_i4:
+            st.metric("⚠️ Hari Ekstrem", "12 hari")
+
+    st.info(
+        "📌 **Interpretasi:** Data menunjukkan adanya beberapa hari dengan kondisi ekstrem "
+        "yang berpotensi meningkatkan risiko banjir dan tekanan terhadap sektor pertanian."
+    )
+
+    st.markdown("---")
     st.subheader("🎯 Tujuan & Metodologi")
-    
+
     with st.expander("Baca lebih lanjut tentang metodologi kami", expanded=False):
         st.markdown("""
-        1.  **Pengolahan Data Historis**: Pembersihan data mentah (BMKG) menjadi dataset valid.
-        2.  **Visualisasi Interaktif**: Grafik dinamis untuk tren suhu, kelembapan, dan hujan.
-        3.  **Analisis Deskriptif**: Statistik utama (Rata-rata, Min, Max).
+        1. **Pengolahan Data Historis**  
+        2. **Visualisasi Interaktif**  
+        3. **Analisis Deskriptif**  
         """)
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.success("👉 Mulai eksplorasi di menu **'Visualisasi Data'** (Sidebar kiri).")
 
     st.markdown("---")
+<<<<<<< HEAD
     st.caption("Disusun Oleh Kelompok 1: Obinata Ridho Abdillah, M. Fadhil Fakhturrohman, Naufal Rafi Putera, Nazil Dwi Khoirul fata.")
+=======
+    st.caption(
+        "Disusun Oleh Kelompok 1: Obinata Ridho Abdillah, Muhammad Fadhil Fakhturrohman, "
+        "Naufal Rafi Putera Wiyanto, Nazil Dwi Khoirul Fata."
+    )
+>>>>>>> 9871221 (Update dashboard: tren, distribusi, dan interpretasi data iklim)
 
 
 if __name__ == "__main__":
