@@ -84,9 +84,9 @@ YupiHengker/
 
 | Nama | Peran |
 | :--- | :--- |
-| **Naufal Rafi Putera** | Analisis Data & Visualisasi |
-| **Nazil Dwi Khoirul Fata** | Pengumpulan Data & Dokumentasi |
-| **Muhammad Fadhil Fatkhurrohman** | Desain UI/UX & Validasi |
+| **Naufal Rafi Putera** | Pencarian Data Mentah testing & validasi |
+| **Nazil Dwi Khoirul Fata** | Pengumpulan Data & Pembersihan Data Dokumentasi Teknis |
+| **Muhammad Fadhil Fatkhurrohman** | Analisis Data & Visualisasi Pengembangan Fitur Sytreamlit|
 | **Obinata Ridho Abdillah** | Manajemen Proyek & Integrasi |
 
 ---
